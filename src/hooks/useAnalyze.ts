@@ -8,7 +8,7 @@ function useAnalyze() {
 }
 
 async function getResult(info: FormData) {
-  const apiURL = import.meta.env.VITE_APP_API_URL;
+  const apiURL = "/api/analyze";
   const result = await fetch(apiURL, { method: "POST", body: info });
 
   if (!result.ok) {
