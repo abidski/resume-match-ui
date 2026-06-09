@@ -6,7 +6,7 @@ import { useState } from "react";
 import ScoreCircle from "./ScoreCircle";
 import KeywordAnalysis from "./KeywordAnalysis";
 import useAnalyze from "../hooks/useAnalyze";
-import { type AnalyzeResult } from "../types";
+import picture from "../assets/image.png";
 
 type View = "upload" | "result";
 function Body() {
@@ -64,8 +64,16 @@ function Body() {
           <>
             {mutation.isSuccess ? (
               <AnalysisComplete data={mutation.data} />
+            ) : mutation.isError ? (
+              <AnanlysIsNotComplete
+                text="Sorry we had an issue analysing the resume and job description."
+                setView={setView}
+              />
             ) : (
-              <>Please upload resume and job description</>
+              <AnanlysIsNotComplete
+                text="Please upload resume and job description to see the results"
+                setView={setView}
+              />
             )}
           </>
         )}
@@ -74,6 +82,42 @@ function Body() {
   );
 }
 
+interface AnanlysIsNotCompleteInterface {
+  text: string;
+  setView: (arg0: View) => void;
+}
+function AnanlysIsNotComplete({
+  text,
+  setView,
+}: AnanlysIsNotCompleteInterface) {
+  return (
+    <>
+      <div className="bg-white h-screen m-8 rounded-2xl ">
+        <div className=" flex flex-1 items-center justify-center m-0 p-0 ">
+          <img
+            src={picture}
+            alt="File logo"
+            className="w-100 h-100 object-contain"
+          />
+        </div>
+        <div className=" flex flex-1 items-center justify-center ">
+          <span className="font-bold text-2xl  ">Missing Information</span>
+        </div>
+        <div className=" flex flex-1 items-center justify-center text-center m-4">
+          <span className=" text-sm  text-slate-500 text-center"> {text}</span>
+        </div>
+        <div className="flex flex-1 justify-center m-8">
+          <button
+            onClick={() => setView("upload")}
+            className="bg-indigo-500 p-4 rounded-2xl text-white font-bold hover:bg-indigo-300  active:scale-95"
+          >
+            Upload
+          </button>
+        </div>
+      </div>
+    </>
+  );
+}
 function AnalysisComplete({ data }: any) {
   console.log(data);
   return (
