@@ -41,24 +41,22 @@ function Body() {
           <>
             <Description />
 
-            <div className="flex flex-1 flex-col min-h-0 gap-6 ">
-              <div className=" flex-1 flex gap-6 min-h-0">
-                <DropZone
-                  setResume={setFile}
-                  setResumeText={setResumeText}
-                  resumeText={resumeText}
-                />
-                <JobDescription
-                  jobDescription={jobDescription}
-                  setJobDescription={setJobDescription}
-                />
-              </div>
-              <AnalyzeButton
-                mutation={mutation}
-                canSubmit={canSubmit}
-                onClick={onClick}
+            <div className="flex flex-1 flex-col md:flex-row min-h-0 gap-6 ">
+              <DropZone
+                setResume={setFile}
+                setResumeText={setResumeText}
+                resumeText={resumeText}
+              />
+              <JobDescription
+                jobDescription={jobDescription}
+                setJobDescription={setJobDescription}
               />
             </div>
+            <AnalyzeButton
+              mutation={mutation}
+              canSubmit={canSubmit}
+              onClick={onClick}
+            />
           </>
         ) : (
           <>

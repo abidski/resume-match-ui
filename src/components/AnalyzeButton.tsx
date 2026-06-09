@@ -12,7 +12,7 @@ function AnalyzeButton({ mutation, canSubmit, onClick }: AnalyzeButtonProps) {
     <div className="items-center justify-center text-center mt-10 ">
       <button
         onClick={onClick}
-        className="bg-indigo-600 text-white font-semibold tracking-wide w-1/6 h-12 hover:bg-indigo-700 rounded-xl shadow-sm mt-8 active:scale-[0.98]"
+        className="bg-indigo-600 text-white font-semibold tracking-wide w-full sm:w-auto h-12 hover:bg-indigo-700 rounded-xl shadow-sm mt-8 active:scale-[0.98] px-8"
       >
         {mutation.isPending ? (
           <span className="flex items-center justify-center gap-2">

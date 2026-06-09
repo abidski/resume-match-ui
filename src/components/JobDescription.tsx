@@ -9,7 +9,7 @@ function JobDescription({
 }: JobDescriptionProps) {
   return (
     <>
-      <div className="mt-8 h-auto w-1/2 min-h-0 flex flex-col flex-1">
+      <div className="mt-8 h-auto w-full min-h-0 flex flex-col flex-1">
         <div className="flex">
           <BriefcaseBusiness className="text-indigo-600" />
           <p className="text-xl mb-4 pl-3 font-bold">Job Description</p>

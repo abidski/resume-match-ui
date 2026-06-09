@@ -61,7 +61,7 @@ function DropZone({ setResume, setResumeText, resumeText }: DropZoneProp) {
   }
   return (
     <>
-      <div className="mt-8  w-1/2 flex flex-col flex-1 min-h-0">
+      <div className="mt-8 w-full flex flex-col flex-1 min-h-0">
         <div className="flex">
           <FileText className="text-indigo-600" />
           <p className="text-xl mb-4 pl-3 font-bold">Upload Resume</p>
