@@ -137,7 +137,7 @@ function AnalysisComplete({ data }: any) {
             {data.summary}
           </span>
         </div>
-        <div className="flex  gap-6 px-4 w-full max-w-5xl mx-auto">
+        <div className="md:flex  gap-6 px-4 w-full max-w-5xl mx-auto">
           <KeywordAnalysis data={data} />
           <Todo data={data} />
         </div>
