@@ -8,7 +8,7 @@ function useAnalyze() {
 }
 
 async function getResult(info: FormData) {
-  const apiURL = "/api/analyze";
+  const apiURL = "/analyze";
   const result = await fetch(apiURL, { method: "POST", body: info });
 
   if (!result.ok) {
