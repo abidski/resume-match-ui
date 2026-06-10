@@ -133,7 +133,7 @@ function DropZoneAccepted({
         <CheckCircle className="text-green-400" />
       </div>
       <span className="font-bold text-lg text-green-500">{file.name}</span>
-      <span className="text-slate-500 text-sm mt-1">PDF, DOCX up to 10MB</span>
+      <span className="text-slate-500 text-sm mt-1">PDF up to 10MB</span>
       <button
         className=" mt-3 border border-slate-200 font-semibold py-2 px-4 text-indigo-600 rounded-2xl hover:bg-slate-100 transition-colors shadow-sm  duration-200 active:scale-[0.98]"
         onClick={handleBrowse}
