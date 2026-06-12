@@ -12,6 +12,7 @@ type View = "upload" | "result";
 function Body() {
   const [view, setView] = useState<View>("upload");
   const [file, setFile] = useState<File | null>(null);
+  const [errorCode, setErrorCode] = useState<number | null>(null);
   const [resumeText, setResumeText] = useState("");
   const [jobDescription, setJobDescription] = useState("");
   const mutation = useAnalyze();
@@ -30,6 +31,12 @@ function Body() {
 
     mutation.mutate(data, {
       onSuccess: () => setView("result"), // ← switches view when done
+      onError: () => {
+        setView("result");
+        if (mutation.error?.status) {
+          setErrorCode(mutation.error.status);
+        }
+      },
     });
   }
 
@@ -66,11 +73,13 @@ function Body() {
               <AnanlysIsNotComplete
                 text="Sorry we had an issue analysing the resume and job description."
                 setView={setView}
+                errorCode={errorCode}
               />
             ) : (
               <AnanlysIsNotComplete
                 text="Please upload resume and job description to see the results"
                 setView={setView}
+                errorCode={errorCode}
               />
             )}
           </>
@@ -83,10 +92,12 @@ function Body() {
 interface AnanlysIsNotCompleteInterface {
   text: string;
   setView: (arg0: View) => void;
+  errorCode: number | null;
 }
 function AnanlysIsNotComplete({
   text,
   setView,
+  errorCode,
 }: AnanlysIsNotCompleteInterface) {
   return (
     <>
@@ -99,10 +110,17 @@ function AnanlysIsNotComplete({
           />
         </div>
         <div className=" flex flex-1 items-center justify-center ">
-          <span className="font-bold text-2xl  ">Missing Information</span>
+          <span className="font-bold text-2xl  ">
+            {errorCode === 429 ? "Limit Reached" : "Missing Information"}
+          </span>
         </div>
         <div className=" flex flex-1 items-center justify-center text-center m-4">
-          <span className=" text-sm  text-slate-500 text-center"> {text}</span>
+          <span className=" text-sm  text-slate-500 text-center">
+            {" "}
+            {errorCode === 429
+              ? "You have reached the limit of analysis made. Please try again later"
+              : text}
+          </span>
         </div>
         <div className="flex flex-1 justify-center m-8">
           <button
