@@ -31,10 +31,11 @@ function Body() {
 
     mutation.mutate(data, {
       onSuccess: () => setView("result"), // ← switches view when done
-      onError: () => {
+      onError: (error) => {
         setView("result");
-        if (mutation.error?.status) {
-          setErrorCode(mutation.error.status);
+        console.log(error.status);
+        if (error.status) {
+          setErrorCode(error.status);
         }
       },
     });
