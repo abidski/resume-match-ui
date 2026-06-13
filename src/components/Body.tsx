@@ -102,7 +102,7 @@ function AnanlysIsNotComplete({
 }: AnanlysIsNotCompleteInterface) {
   return (
     <>
-      <div className="bg-white h-screen m-8 rounded-2xl ">
+      <div className="bg-slate-50 h-screen m-8 rounded-2xl ">
         <div className=" flex flex-1 items-center justify-center m-0 p-0 ">
           <img
             src={picture}
